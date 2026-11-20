@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для самой любимой мамы 💗</title>
+<style>
+  :root { --pink:#f6a9c5; --deep:#b94f78; --cream:#fff8f8; --rose:#ffe2ec; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; color:#754455; overflow-x:hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    background: radial-gradient(circle at 15% 15%, #fff 0 8%, transparent 30%),
+                linear-gradient(145deg,#fff8fb,#ffe4ed 55%,#fff1f5);
+  }
+  .petals { position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+  .petal { position:absolute; top:-12vh; font-size:clamp(16px,3vw,28px); opacity:.55; animation:fall linear infinite; }
+  @keyframes fall { to { transform:translateY(120vh) rotate(360deg); } }
+  main { position:relative; z-index:1; width:min(920px,92%); margin:0 auto; padding:48px 0 36px; text-align:center; }
+  .topline { color:#c16a8b; letter-spacing:.22em; text-transform:uppercase; font:600 11px Arial,sans-serif; }
+  .flower { font-size:clamp(50px,9vw,84px); margin:20px 0 6px; filter:drop-shadow(0 8px 10px #e8a8bf55); }
+  h1 { font-size:clamp(38px,7vw,68px); line-height:1.04; font-weight:normal; margin:8px 0 16px; color:#a9446b; }
+  .subtitle { font:16px/1.7 Arial,sans-serif; color:#946274; max-width:560px; margin:0 auto; }
+  .card {
+    margin:34px auto 24px; padding:clamp(26px,6vw,54px);
+    max-width:690px; border:1px solid #f5c8d8; border-radius:28px;
+    background:rgba(255,255,255,.76); box-shadow:0 18px 55px #b85d7c1c;
+    position:relative;
+  }
+  .card:before,.card:after { content:"✿"; position:absolute; color:#e6a0b8; font-size:26px; }
+  .card:before { top:15px; left:19px; } .card:after { bottom:15px; right:19px; }
+  .message { font-size:clamp(25px,5vw,39px); line-height:1.35; color:#a9446b; margin:5px 0 18px; }
+  .from { font:italic 19px Georgia,serif; color:#bd6b8b; }
+  .note { font:15px/1.8 Arial,sans-serif; color:#966b7b; margin:18px auto 0; max-width:510px; }
+  button {
+    border:0; border-radius:999px; padding:15px 25px; margin-top:8px;
+    background:linear-gradient(135deg,#e98eaf,#cf6792); color:white;
+    font:600 15px Arial,sans-serif; cursor:pointer; box-shadow:0 8px 20px #ce719344;
+    transition:transform .2s, box-shadow .2s;
+  }
+  button:hover { transform:translateY(-2px); box-shadow:0 12px 25px #ce719355; }
+  #surprise { display:none; margin:20px auto 0; color:#a9446b; font-size:21px; line-height:1.6; animation:appear .6s ease both; }
+  @keyframes appear { from {opacity:0; transform:translateY(10px)} to {opacity:1;transform:none} }
+  footer { margin-top:36px; color:#bd8298; font:12px Arial,sans-serif; letter-spacing:.08em; }
+  .hearts { margin-top:18px; font-size:20px; letter-spacing:8px; }
+  @media (prefers-reduced-motion: reduce) { .petal { animation:none; } * {scroll-behavior:auto!important;} }
+</style>
+</head>
+<body>
+<div class="petals" aria-hidden="true" id="petals"></div>
+<main>
+  <div class="topline">маленький сайт с большой любовью</div>
+  <div class="flower" aria-hidden="true">💐</div>
+  <h1>Для любимой<br>мамочки</h1>
+  <p class="subtitle">Самому родному человеку — самые нежные слова и целое море любви.</p>
+
+  <section class="card">
+    <div class="message">Мамочка, я тебя<br>очень люблю! 💗</div>
+    <div class="from">С любовью, твоя Милана</div>
+    <p class="note">Спасибо за твою заботу, доброту, ласку и за то, что ты всегда рядом. Ты — моё солнышко и самое дорогое чудо!</p>
+    <div class="hearts" aria-hidden="true">🌷 💕 🌸</div>
+  </section>
+
+  <button type="button" id="surpriseBtn">Нажми на маленький сюрприз ✨</button>
+  <div id="surprise">Ты самая лучшая мама на свете!<br>Обнимаю крепко-крепко! 🤗💞</div>
+  <footer>СОЗДАНО С ЛЮБОВЬЮ · МИЛАНА</footer>
+</main>
+<script>
+  const area = document.getElementById('petals');
+  const symbols = ['🌸','🌷','💕','✿'];
+  for (let i=0; i<18; i++) {
+    const el = document.createElement('span');
+    el.className = 'petal';
+    el.textContent = symbols[i % symbols.length];
+    el.style.left = (Math.random()*100) + '%';
+    el.style.animationDuration = (10 + Math.random()*13) + 's';
+    el.style.animationDelay = (-Math.random()*20) + 's';
+    el.style.fontSize = (15 + Math.random()*17) + 'px';
+    area.appendChild(el);
+  }
+  document.getElementById('surpriseBtn').addEventListener('click', () => {
+    document.getElementById('surprise').style.display = 'block';
+    document.getElementById('surpriseBtn').textContent = 'Сюрприз открыт 💖';
+  });
+</script>
+</body>
+</html>
